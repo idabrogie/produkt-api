@@ -3,6 +3,7 @@ Created by Pär Hinds
  */
 package com.example.produktapi.controller;
 
+import java.util.Locale;
 import com.example.produktapi.model.Product;
 import com.example.produktapi.service.ProductService;
 import org.junit.jupiter.api.Assertions;
@@ -17,7 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
