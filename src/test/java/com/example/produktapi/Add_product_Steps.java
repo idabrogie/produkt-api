@@ -38,17 +38,16 @@ public class Add_product_Steps {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+  
     @When("user clicks on add productButton")
     public void user_clicks_on_add_productButton() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+  
     @Then("a product")
     public void a_product() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
-
-
 }
