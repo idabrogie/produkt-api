@@ -14,7 +14,6 @@ public class Add_product_Steps {
 
     WebDriver driver;
 
-
     public Add_product_Steps() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("incognito");
