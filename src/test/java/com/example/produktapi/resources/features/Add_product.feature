@@ -7,5 +7,5 @@ Feature: Test add product function
 
   Scenario: As a user add a product to cart
     Given user is on webpage
-    When user clicks on add productbutton
+    When user clicks on add productButton
     Then a product
