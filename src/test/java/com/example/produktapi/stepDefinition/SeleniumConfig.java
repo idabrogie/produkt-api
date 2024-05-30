@@ -8,8 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class SeleniumConfig {
     private static WebDriver driver;
-
-    public WebDriver getDriver() {
+    public  WebDriver getDriver() {
         if (driver == null) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless=new");
