@@ -1,5 +1,6 @@
 package com.example.produktapi.stepDefinition;
 
+import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,9 +17,16 @@ public class SeleniumConfig {
         }
         return driver;
     }
-    @Given("User visitning webshop")
-    public void userVisitningWebshop() {
+
+    @Given("User visiting webshop")
+    public void userVisitingWebshop() {
         getDriver().get("https://webshop-agil-testautomatiserare.netlify.app/");
     }
 
+    @After
+    public void tearDown() {
+        if (getDriver() != null) {
+            getDriver().quit();
+        }
+    }
 }
