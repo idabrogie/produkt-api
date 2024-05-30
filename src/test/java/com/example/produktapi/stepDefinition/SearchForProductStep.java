@@ -19,13 +19,14 @@ public class SearchForProductStep {
     SeleniumConfig seleniumConfig = new SeleniumConfig();
     @When("User clicks on Meny item {string}")
     public void userClicksOnMenyItem(String menyItem) {
-        seleniumConfig.getDriver().findElement(By.linkText("Shop")).click();
+        seleniumConfig.getDriver().findElement(By.linkText(menyItem)).click();
     }
     @And("User search for product on webpage")
-    public void userSearchForProductOnWebpage(){
+    public void userSearchForProductOnWebpage() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(20));
         WebElement searchTxtField =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("search")));
-        searchTxtField.sendKeys("Mens");
+
+        searchTxtField.sendKeys("WD");
     }
     @Then("User can see the search product")
     public void userCanSeeTheSearchProduct() {
