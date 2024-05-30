@@ -9,10 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Add_product_Steps {
+public class AddProductSteps {
 
     WebDriver driver = new ChromeDriver();
-    //WebDriver driver = new EdgeDriver();
 
     @Given("User enters website")
     public void user_enters_website() {
