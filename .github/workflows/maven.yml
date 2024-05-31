@@ -25,19 +25,11 @@ jobs:
         run: |
           wget https://storage.googleapis.com/chrome-for-testing-public/121.0.6167.184/linux64/chromedriver-linux64.zip
           unzip chromedriver-linux64.zip
-          cd chromedriver-linux64
-          chmod +x chromedriver
-          sudo mv chromedriver /usr/local/bin
+          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+          chmod +x /usr/local/bin/chromedriver
 
-     # - name: Build and Test with Maven
-     #   run: mvn -B clean verify -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
+      - name: Build and Test with Maven
+        run: mvn -B clean verify -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
 
       - name: Run Selenium tests headlessly
-        env:
-          HEADLESS: true
-        run: |
-          if [ "$HEADLESS" = true ]; then     
-            mvn -B clean verify -DargLine="-Dheadless=true" -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin
-          else           
-            mvn clean test         
-          fi
+        run: mvn -B clean verify -Dheadless=true -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
