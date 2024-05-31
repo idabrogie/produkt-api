@@ -14,19 +14,27 @@ import java.security.Key;
 import java.time.Duration;
 import java.time.Instant;
 
+
+
 public class SearchForProductStep {
 
     SeleniumConfig seleniumConfig = new SeleniumConfig();
-    @When("User clicks on Meny item {string}")
-    public void userClicksOnMenyItem(String menyItem) {
-        seleniumConfig.getDriver().findElement(By.linkText(menyItem)).click();
-    }
+
     @And("User search for product on webpage")
     public void userSearchForProductOnWebpage() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(20));
-        WebElement searchTxtField =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("search")));
+        WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
+        WebElement searchTxtField =  wait.until(ExpectedConditions.presenceOfElementLocated(By.id("search")));
 
-        searchTxtField.sendKeys("WD");
+
+        searchTxtField.clear();
+        searchTxtField.click();
+
+        //wait(5000);
+
+       // searchTxtField.sendKeys("WD");
+        new Actions(seleniumConfig.getDriver())
+                .sendKeys(searchTxtField,"WD")
+                .perform();
     }
     @Then("User can see the search product")
     public void userCanSeeTheSearchProduct() {
