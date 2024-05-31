@@ -1,4 +1,4 @@
-package com.example.produktapi;
+package com.example.produktapi.service;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
