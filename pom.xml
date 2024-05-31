@@ -72,6 +72,12 @@
 			<artifactId>selenium-java</artifactId>
 			<version>4.14.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>3.2.5</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -79,6 +85,17 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>3.2.5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.2.5</version>
+				<configuration>
+					<testSourceDirectory>src/test/java/com/example/produktapi</testSourceDirectory>
+					<includes>
+						<include>**/RunCucumberTest.java</include>
+					</includes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
