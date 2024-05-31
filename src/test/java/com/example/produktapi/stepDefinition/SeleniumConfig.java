@@ -3,6 +3,7 @@ package com.example.produktapi.stepDefinition;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
