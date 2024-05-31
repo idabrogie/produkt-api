@@ -32,5 +32,4 @@ jobs:
         run: mvn -B clean verify -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
 
       - name: Run Selenium tests headlessly
-        run: |
-          mvn -B clean verify -Dheadless=true -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
+        run: mvn -B clean verify -Dheadless=true -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
