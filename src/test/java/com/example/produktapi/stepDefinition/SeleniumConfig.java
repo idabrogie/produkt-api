@@ -13,7 +13,7 @@ public class SeleniumConfig {
     public  WebDriver getDriver() {
         if (driver == null) {
             ChromeOptions options = new ChromeOptions();
-            //options.addArguments("--headless=new");
+            options.addArguments("--headless=new");
             driver = new ChromeDriver(options);
             driver.manage().window().maximize();
         }
@@ -31,10 +31,10 @@ public class SeleniumConfig {
 
 
 
-//    @After
-//    public void tearDown() {
-//        if (getDriver() != null) {
-//            getDriver().quit();
-//        }
-//    }
+    @After
+    public void tearDown() {
+        if (getDriver() != null) {
+            getDriver().quit();
+        }
+    }
 }
