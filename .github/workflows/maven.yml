@@ -35,7 +35,7 @@ jobs:
       - name: Run Selenium tests headlessly
         env:
           HEADLESS: true
-          run: |
+        run: |
             if [ "$HEADLESS" = true ]; then          
               mvn clean test -DargLine="-Dheadless=true"         
             else           
