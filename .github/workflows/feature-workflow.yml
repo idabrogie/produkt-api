@@ -34,5 +34,10 @@ jobs:
       - name: Run Selenium tests headlessly
         run: |
           echo "Running Selenium tests headlessly..."
-          mvn -B clean verify -Dheadless=true -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
+          run: |
+            mvn -B clean verify \
+            -DargLine="-Dheadless=true" \
+            -DskipTests=false \
+            -Dcucumber.features=src/test/java/com/example/produktapi/features \
+            -Dwebdriver.chrome.driver=/usr/local/bin/chromedrivermvn -B clean verify -Dheadless=true -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
           echo "Selenium tests completed."
