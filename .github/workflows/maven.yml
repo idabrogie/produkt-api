@@ -37,7 +37,7 @@ jobs:
           HEADLESS: true
         run: |
           if [ "$HEADLESS" = true ]; then     
-            mvn -B clean verify -DargLine="-Dheadless=true" -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin
+            mvn -B clean verify -DargLine="-Dheadless=true" -DskipTests=false -Dcucumber.features=src/test/features -Dwebdriver.chrome.driver=/usr/local/bin
           else           
             mvn clean test         
           fi
