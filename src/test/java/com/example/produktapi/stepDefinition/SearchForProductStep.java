@@ -2,7 +2,6 @@ package com.example.produktapi.stepDefinition;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -10,30 +9,46 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 
 public class SearchForProductStep {
     SeleniumConfig seleniumConfig = new SeleniumConfig();
 
 
-    @And("User search for product {string} on webpage")
-    public void userSearchForProductOnWebpage(String productName) {
+    @And("User search for product WD")
+    public void userSearchForProductWD() {
         WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
-        WebElement searchTxtField = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("search")));
+        WebElement searchTxtField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("search")));
 
         searchTxtField.clear();
         searchTxtField.click();
 
         new Actions(seleniumConfig.getDriver())
-                .sendKeys(searchTxtField, productName)
+                .sendKeys(searchTxtField, "WD")
                 .perform();
     }
+
+    @And("User search for product Elefant")
+    public void userSearchForProductElefant() {
+        WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
+        WebElement searchTxtField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("search")));
+
+        searchTxtField.clear();
+        searchTxtField.click();
+
+        new Actions(seleniumConfig.getDriver())
+                .sendKeys(searchTxtField, "Elefant")
+                .perform();
+    }
+
     @Then("User can see the search product and expect {int} products")
     public void userCanSeeTheSearchProductAndExpectProducts(int numberOfProduct) {
+        // Wait for the products to load
         WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
-        WebElement divElementsWithClass = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("my-5")));
-        int divCount = divElementsWithClass.findElements(By.cssSelector("div.col")).size();
-       // Assertions.assertEquals(numberOfProduct, divCount);
+        List<WebElement> products = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("#main .product")));
+             int productCount = products.size();
+        System.out.println(productCount);
     }
 
     @Then("Result should be an empty main")
@@ -43,6 +58,6 @@ public class SearchForProductStep {
         // Get the inner HTML content of the main element
         String innerHTML = mainElement.getAttribute("innerHTML");
         // Assert that the inner HTML content is empty
-        Assert.assertTrue("The main element is empty.", innerHTML.isEmpty());
+        Assertions.assertTrue(innerHTML.isEmpty());
     }
 }
