@@ -100,7 +100,8 @@
 				<version>3.2.5</version>
 				<configuration>
 					<includes>
-						<include>**/RunCucumberTest*.java</include>
+						<include>**/RunCucumberTest.java</include>
+						<include>**/controller/*Test.java</include>
 					</includes>
 					<testFailureIgnore>false</testFailureIgnore>
 				</configuration>
