@@ -1,6 +1,6 @@
 package com.example.produktapi.stepDefinition;
 
-import io.cucumber.java.After;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.AfterEach;
@@ -30,12 +30,9 @@ public class SeleniumConfig {
         getDriver().findElement(By.linkText(menyItem)).click();
     }
 
-
-
-    @AfterEach
     public void tearDown() {
-        if (getDriver() != null) {
-            getDriver().quit();
-        }
+    if (getDriver() != null) {
+           getDriver().quit();
+       }
     }
 }

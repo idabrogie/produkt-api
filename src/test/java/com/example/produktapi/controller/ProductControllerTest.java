@@ -65,7 +65,6 @@ class ProductControllerTest {
         mockMvc.perform(get("/products/{id}", productId)
                     .contentType(MediaType.APPLICATION_JSON)
                     .characterEncoding("utf-8"))
-                    .andDo(print()) // Print the request and response details
                     .andExpect(status().isOk());
 
         assertEquals(1, mockProduct.getId());
