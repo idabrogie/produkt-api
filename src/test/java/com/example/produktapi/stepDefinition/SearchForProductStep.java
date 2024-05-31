@@ -47,7 +47,9 @@ public class SearchForProductStep {
         WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
         WebElement divElementsWithClass = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("my-5")));
         int divCount = divElementsWithClass.findElements(By.cssSelector("div.col")).size();
-       // Assertions.assertEquals(numberOfProduct, divCount);
+        System.out.println(divCount);
+        Assertions.assertEquals(numberOfProduct, divCount);
+
     }
 
     @Then("Result should be an empty main")
@@ -58,5 +60,6 @@ public class SearchForProductStep {
         String innerHTML = mainElement.getAttribute("innerHTML");
         // Assert that the inner HTML content is empty
         Assertions.assertTrue(innerHTML.isEmpty());
+
     }
 }

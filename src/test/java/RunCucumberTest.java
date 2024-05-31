@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/java/com/example/produktapi/resources/features",
+        features = "src/test/java/com/example/produktapi/features",
         glue = "com.example.produktapi.stepDefinition",
         plugin = {
                 "pretty",
