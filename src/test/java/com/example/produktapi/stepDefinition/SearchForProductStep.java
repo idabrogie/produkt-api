@@ -10,8 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Collections;
-import java.util.List;
+
 
 public class SearchForProductStep {
     SeleniumConfig seleniumConfig = new SeleniumConfig();
@@ -32,15 +31,18 @@ public class SearchForProductStep {
     @Then("User can see the search product and expect {int} products")
     public void userCanSeeTheSearchProductAndExpectProducts(int numberOfProduct) {
         WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
-        List<WebElement> divElementsWithClass = Collections.singletonList(wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("main#main div.product"))));
-        // Count the number of div elements with class "col"
-        int divCountWithClass = divElementsWithClass.size();
-
-        Assertions.assertEquals(numberOfProduct, divElementsWithClass);
+        WebElement divElementsWithClass = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("my-5")));
+        int divCount = divElementsWithClass.findElements(By.cssSelector("div.col")).size();
+        Assertions.assertEquals(numberOfProduct, divCount);
     }
 
     @Then("Result should be an empty main")
     public void resultShouldBeAnEmptyMain() {
-        Assertions.assertTrue(false);
+        // Find the main element by class name
+        WebElement mainElement = seleniumConfig.getDriver().findElement(By.className("my-5"));
+        // Get the inner HTML content of the main element
+        String innerHTML = mainElement.getAttribute("innerHTML");
+        // Assert that the inner HTML content is empty
+        Assertions.assertTrue("The main element is empty.", innerHTML.isEmpty());
     }
 }
