@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 
 public class SearchForProductStep {
@@ -46,9 +45,9 @@ public class SearchForProductStep {
     public void userCanSeeTheSearchProductAndExpectProducts(int numberOfProduct) {
         // Wait for the products to load
         WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
-        List<WebElement> products = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("#main .product")));
-             int productCount = products.size();
-        System.out.println(productCount);
+        WebElement divElementsWithClass = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("my-5")));
+        int divCount = divElementsWithClass.findElements(By.cssSelector("div.col")).size();
+       // Assertions.assertEquals(numberOfProduct, divCount);
     }
 
     @Then("Result should be an empty main")
@@ -58,6 +57,6 @@ public class SearchForProductStep {
         // Get the inner HTML content of the main element
         String innerHTML = mainElement.getAttribute("innerHTML");
         // Assert that the inner HTML content is empty
-        Assertions.assertTrue(innerHTML.isEmpty());
+        Assertions.assertTrue("The main element is empty.", innerHTML.isEmpty());
     }
 }
