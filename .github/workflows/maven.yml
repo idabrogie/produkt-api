@@ -29,6 +29,7 @@ jobs:
           cd chromedriver-linux64
           chmod +x chromedriver
           sudo mv chromedriver /usr/local/bin
+          ls -la
 
       - name: Build and Test with Maven
         run: mvn -B clean verify -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
