@@ -31,3 +31,13 @@ jobs:
 
       - name: Build and Test with Maven
         run: mvn -B clean verify -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
+
+      - name: Run Selenium tests headlessly
+        env:
+          HEADLESS: true
+          run: |
+            if [ "$HEADLESS" = true ]; then          
+              mvn clean test -DargLine="-Dheadless=true"         
+            else           
+              mvn clean test         
+            fi
