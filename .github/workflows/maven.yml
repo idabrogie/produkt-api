@@ -25,7 +25,10 @@ jobs:
       - name: Install ChromeDriver
         run: |
           wget "https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.141/linux64/chromedriver-linux64.zip"
-          ls -la
+          unzip chromedriver-linux64.zip
+          cd chromedriver-linux64
+          chmod +x chromedriver
+          sudo mv chromedriver /usr/local/bin
 
       - name: Build and Test with Maven
         run: mvn -B clean verify -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
