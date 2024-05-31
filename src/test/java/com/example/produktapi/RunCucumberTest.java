@@ -1,4 +1,4 @@
-package com.example.produktapi.runner;
+package com.example.produktapi;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
