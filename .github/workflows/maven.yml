@@ -25,7 +25,7 @@ jobs:
       - name: Install ChromeDriver
         run: |
           wget "https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.141/linux64/chromedriver-linux64.zip"
-          ls -l
+          ls -la
 
       - name: Build and Test with Maven
         run: mvn -B clean verify -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
@@ -33,5 +33,9 @@ jobs:
       - name: Run Selenium tests headlessly
         run: |
           echo "Running Selenium tests headlessly..."
-          mvn -B clean verify -Dheadless=true -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
+          mvn -B clean verify \
+          -DargLine="-Dheadless=true" \
+          -DskipTests=false \
+          -Dcucumber.features=src/test/java/com/example/produktapi/features \
+          -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
           echo "Selenium tests completed."
