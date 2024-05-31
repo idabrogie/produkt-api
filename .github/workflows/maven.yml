@@ -29,15 +29,15 @@ jobs:
           chmod +x chromedriver
           sudo mv chromedriver /usr/local/bin
 
-      - name: Build and Test with Maven
-        run: mvn -B clean verify -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
+     # - name: Build and Test with Maven
+     #   run: mvn -B clean verify -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
 
       - name: Run Selenium tests headlessly
         env:
           HEADLESS: true
         run: |
-          if [ "$HEADLESS" = true ]; then          
-            mvn clean test -DargLine="-Dheadless=true"         
+          if [ "$HEADLESS" = true ]; then     
+            mvn -B clean verify -DargLine="-Dheadless=true" -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin
           else           
             mvn clean test         
           fi
