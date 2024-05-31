@@ -41,6 +41,6 @@ public class SearchForProductStep {
 
     @Then("Result should be an empty main")
     public void resultShouldBeAnEmptyMain() {
-
+        Assertions.assertTrue(false);
     }
 }
