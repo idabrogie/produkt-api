@@ -93,7 +93,7 @@
 				<configuration>
 					<testSourceDirectory>src/test/java/com/example/produktapi</testSourceDirectory>
 					<includes>
-						<include>**/RunCucumberTest.java</include>
+						<include>**/*Test.java</include>
 					</includes>
 				</configuration>
 			</plugin>
