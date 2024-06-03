@@ -1,4 +1,4 @@
-name: Maven Build and Selenium Tests on Push
+name: Maven Build and run Selenium Tests on Push
 
 on:
   push:
@@ -29,12 +29,8 @@ jobs:
           cd chromedriver-linux64
           chmod +x chromedriver
           sudo mv chromedriver /usr/local/bin
-          ls -la
 
-      - name: Build and Test with Maven
-        run: mvn -B clean verify -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
-
-      - name: Run Selenium tests headlessly
+      - name: Build and Run tests
         run: |
           echo "Running Selenium tests headlessly..."
           mvn -B clean verify \
