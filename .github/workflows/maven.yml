@@ -1,9 +1,10 @@
-name: Maven Build and Selenium Tests on Push
+name: Maven Build and run Selenium Tests on Push
 
 on:
   push:
     branches:
       - main
+      - feature/*
 
 jobs:
   build-and-test:
@@ -23,16 +24,18 @@ jobs:
 
       - name: Install ChromeDriver
         run: |
-          wget https://storage.googleapis.com/chrome-for-testing-public/121.0.6167.184/linux64/chromedriver-linux64.zip
+          wget "https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.141/linux64/chromedriver-linux64.zip"
           unzip chromedriver-linux64.zip
-          sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
-          chmod +x /usr/local/bin/chromedriver
+          cd chromedriver-linux64
+          chmod +x chromedriver
+          sudo mv chromedriver /usr/local/bin
 
-      - name: Build and Test with Maven
-        run: mvn -B clean verify -DskipTests=false -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
-
-      - name: Run Selenium tests headlessly
+      - name: Build and Run tests
         run: |
           echo "Running Selenium tests headlessly..."
-          mvn -B clean verify -Dheadless=true -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
+          mvn -B clean verify \
+          -DargLine="-Dheadless=true" \
+          -DskipTests=false \
+          -Dcucumber.features=src/test/java/com/example/produktapi/features \
+          -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
           echo "Selenium tests completed."
