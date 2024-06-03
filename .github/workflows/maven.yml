@@ -33,8 +33,8 @@ jobs:
       - name: Build and Run tests
         run: |
           echo "Running Selenium tests headlessly..."
+          export RUN_HEADLESS=true
           mvn -B clean verify \
-          -DargLine="-Dheadless=true" \
           -DskipTests=false \
           -Dcucumber.features=src/test/java/com/example/produktapi/features \
           -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
