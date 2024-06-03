@@ -14,9 +14,8 @@ import java.time.Duration;
 public class SearchForProductStep {
     SeleniumConfig seleniumConfig = new SeleniumConfig();
 
-
-    @And("User search for product WD")
-    public void userSearchForProductWD() {
+    @And("User search for product {string}")
+    public void userSearchForProduct(String productName) {
         WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
         WebElement searchTxtField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("search")));
 
@@ -24,20 +23,7 @@ public class SearchForProductStep {
         searchTxtField.click();
 
         new Actions(seleniumConfig.getDriver())
-                .sendKeys(searchTxtField, "WD")
-                .perform();
-    }
-
-    @And("User search for product Elefant")
-    public void userSearchForProductElefant() {
-        WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
-        WebElement searchTxtField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("search")));
-
-        searchTxtField.clear();
-        searchTxtField.click();
-
-        new Actions(seleniumConfig.getDriver())
-                .sendKeys(searchTxtField, "Elefant")
+                .sendKeys(searchTxtField, productName)
                 .perform();
     }
 
@@ -47,7 +33,7 @@ public class SearchForProductStep {
         WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
         WebElement divElementsWithClass = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("my-5")));
         int divCount = divElementsWithClass.findElements(By.cssSelector("div.col")).size();
-       // Assertions.assertEquals(numberOfProduct, divCount);
+        Assertions.assertEquals(numberOfProduct, divCount);
     }
 
     @Then("Result should be an empty main")
@@ -58,6 +44,5 @@ public class SearchForProductStep {
         String innerHTML = mainElement.getAttribute("innerHTML");
         // Assert that the inner HTML content is empty
         Assertions.assertTrue(innerHTML.isEmpty());
-
     }
 }
