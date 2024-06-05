@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
         glue = "com.example.produktapi.stepDefinition",
         plugin = {
                 "pretty",
-                "html:cucumber-reports.html",
+                "html:target/cucumber-reports.html",
                 "json:target/cucumber-reports.json"
         },
         monochrome = true
