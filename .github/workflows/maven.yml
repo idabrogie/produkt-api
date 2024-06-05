@@ -39,3 +39,4 @@ jobs:
           -Dcucumber.features=src/test/java/com/example/produktapi/features \
           -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
           echo "Selenium tests completed."
+          ls -la /target 
