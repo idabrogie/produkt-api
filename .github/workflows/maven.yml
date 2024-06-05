@@ -46,6 +46,8 @@ jobs:
         run: |
           echo "Running Selenium tests headlessly..."
           export RUN_HEADLESS=true
+          mkdir target
+          chmod a+w target
           mvn -B clean verify \
           -DskipTests=false \
           -Dcucumber.features=src/test/java/com/example/produktapi/features \
