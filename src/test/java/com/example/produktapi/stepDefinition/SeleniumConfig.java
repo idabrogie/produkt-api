@@ -27,6 +27,11 @@ public class SeleniumConfig {
         getDriver().get("https://webshop-agil-testautomatiserare.netlify.app/");
     }
 
+    @Given("user clicks on Menu item shop")
+    public void user_clicks_on_menu_item_shop() {
+        getDriver().get("https://webshop-agil-testautomatiserare.netlify.app/products#");
+
+    }
     @When("User clicks on Meny item {string}")
     public void userClicksOnMenyItem(String menyItem) {
         getDriver().findElement(By.linkText(menyItem)).click();
