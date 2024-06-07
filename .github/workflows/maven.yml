@@ -19,7 +19,6 @@ permissions:
   #cancel-in-progress: false
 
 jobs:
-  
   build-and-test:
   #  environment:
   #    name: github-pages
@@ -59,6 +58,29 @@ jobs:
           echo "Selenium tests completed."
           ls -la
           ls -la target
+  deploy:
+    needs: build-and-test
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: check target
+        run: |
+          echo "In Deploy-job"
+          ls -la
+     # - name: Checkout
+      #  uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './target/cucumber-reports.html'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
     #  - name: Upload artifact
     #    uses: actions/upload-pages-artifact@v3
     #    with:
