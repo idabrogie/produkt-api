@@ -19,9 +19,12 @@ permissions:
   #cancel-in-progress: false
 
 jobs:
+  
   build-and-test:
+  #  environment:
+  #    name: github-pages
+  #    url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -48,6 +51,7 @@ jobs:
           export RUN_HEADLESS=true
           mkdir target
           chmod 777 target
+          ls -la
           mvn -B clean verify \
           -DskipTests=false \
           -Dcucumber.features=src/test/java/com/example/produktapi/features \
@@ -55,21 +59,10 @@ jobs:
           echo "Selenium tests completed."
           ls -la
           ls -la target
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './target/cucumber-reports.html'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    #  - name: Upload artifact
+    #    uses: actions/upload-pages-artifact@v3
+    #    with:
+    #      path: './target/cucumber-reports.html'
+    #  - name: Deploy to GitHub Pages
+    #    id: deployment
+    #    uses: actions/deploy-pages@v4
