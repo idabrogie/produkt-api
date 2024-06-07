@@ -2,7 +2,9 @@ package com.example.produktapi.stepDefinition;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -40,6 +42,14 @@ public class CheckoutFormSteps {
 
     @And("user clicks the continue to checkout-button")
     public void userClicksTheContinueToCheckoutButton() {
-        seleniumConfig.getDriver().findElement(By.id(""));
+       WebElement button = seleniumConfig.getDriver().findElement(By.className("btn-lg"));
+        button.click();
+    }
+
+    @Then("the user cannot continue to checkout")
+    public void theUserCannotContinueToCheckout() {
+        /*WebElement missingData = seleniumConfig.getDriver().findElement(By.className("needs-validation"));
+        String className = missingData.getAttribute("class");
+        System.out.println(className);*/
     }
 }
