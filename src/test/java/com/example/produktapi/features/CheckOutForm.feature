@@ -1,5 +1,4 @@
 
-#Gherkin:
 Feature: User wants to checkout shopcart
 
   Background:
