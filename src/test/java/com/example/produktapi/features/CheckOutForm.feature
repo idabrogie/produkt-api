@@ -6,6 +6,6 @@ Feature: User wants to checkout shopcart
     And the user is on CheckoutPage
 
   Scenario: Form is missing data
-    When user does not fill in the form
-    And user clicks the continue to checkout-button
-    Then the user cannot continue to checkout
+    When user clicks the continue to checkout-button without filling out the form
+    Then the user gets validation errors and cant continue
+    And the user is still on checkout page
