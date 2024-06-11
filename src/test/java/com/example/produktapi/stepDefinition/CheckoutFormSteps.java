@@ -36,12 +36,7 @@ public class CheckoutFormSteps {
         seleniumConfig.getDriver().get(("https://webshop-agil-testautomatiserare.netlify.app/checkout"));
     }
 
-    @When("user does not fill in the form")
-    public void userDoesNotFillInTheForm() {
-
-    }
-
-    @And("user clicks the continue to checkout-button without filling out the form")
+    @When("user clicks the continue to checkout-button without filling out the form")
     public void userClicksTheContinueToCheckoutButtonWithoutFillingOutTheForm() {
         WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
         WebElement checkoutButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(), 'Continue to checkout')]")));

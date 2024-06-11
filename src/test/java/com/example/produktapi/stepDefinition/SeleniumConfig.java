@@ -37,9 +37,12 @@ public class SeleniumConfig {
         getDriver().findElement(By.linkText(menyItem)).click();
     }
 
+    @After
     public void tearDown() {
-    if (getDriver() != null) {
-           getDriver().quit();
-       }
+        if (getDriver() != null) {
+            System.out.println("Quitting the driver...");
+            getDriver().quit();
+            driver = null; // Reset the driver to ensure it can be re-initialized if needed
+        }
     }
 }
