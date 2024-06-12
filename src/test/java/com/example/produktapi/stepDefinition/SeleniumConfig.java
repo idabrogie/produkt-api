@@ -49,6 +49,7 @@ public class SeleniumConfig {
     @And("User has clicked on checkoutButton")
     public void userHasClickedOnCheckoutButton() {
         System.out.println("Nu kör vi den här metoden.");
+        driver.navigate().refresh();
         WebElement button = driver.findElement(By.xpath("//a[@href='/checkout']"));
         System.out.println(button);
         button.click();

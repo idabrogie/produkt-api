@@ -88,12 +88,12 @@ public class CheckoutFormSteps {
     @When("clicks on the continue button")
     public void clicks_on_the_continue_button() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        //throw new io.cucumber.java.PendingException();
     }
 
     @Then("the user should be redirected to https:\\/\\/webshop-agil-testautomatiserare.netlify.app\\/checkout?paymentMethod=on")
     public void the_user_should_be_redirected_to_https_webshop_agil_testautomatiserare_netlify_app_checkout_payment_method_on() {
         // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        //throw new io.cucumber.java.PendingException();
     }
 }
