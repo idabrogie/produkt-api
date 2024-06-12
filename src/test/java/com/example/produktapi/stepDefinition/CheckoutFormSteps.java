@@ -34,11 +34,6 @@ public class CheckoutFormSteps {
         ((JavascriptExecutor) seleniumConfig.getDriver()).executeScript("arguments[0].click();", addToCartButton);
     }
 
-    @And("the user is on CheckoutPage")
-    public void theUserIsOnCheckoutPage() {
-        seleniumConfig.getDriver().get(("https://webshop-agil-testautomatiserare.netlify.app/checkout"));
-    }
-
     @When("user clicks the continue to checkout-button without filling out the form")
     public void userClicksTheContinueToCheckoutButtonWithoutFillingOutTheForm() {
         WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));

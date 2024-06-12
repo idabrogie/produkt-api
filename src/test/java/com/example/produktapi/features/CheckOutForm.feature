@@ -3,7 +3,7 @@ Feature: User wants to checkout shopcart
 
   Background:
     Given there are items in the shopCart
-    And the user is on CheckoutPage
+    And User has clicked on checkoutButton
 
   Scenario: Form is missing data
     When user clicks the continue to checkout-button without filling out the form

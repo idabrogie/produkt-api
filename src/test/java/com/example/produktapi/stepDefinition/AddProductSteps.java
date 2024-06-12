@@ -14,7 +14,7 @@ import java.time.Duration;
 public class AddProductSteps {
 
     SeleniumConfig seleniumConfig = new SeleniumConfig();
-    @When("user clicks on add productButton")
+    /*@When("user clicks on add productButton")
     public void user_clicks_on_add_productButton() {
         WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
         WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(), 'Add to cart')]")));
@@ -24,7 +24,7 @@ public class AddProductSteps {
 
         // Click using JavaScript executor
         ((JavascriptExecutor) seleniumConfig.getDriver()).executeScript("arguments[0].click();", addToCartButton);
-    }
+    }*/
 
 
 
