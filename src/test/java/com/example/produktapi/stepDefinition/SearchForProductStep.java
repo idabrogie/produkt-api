@@ -30,6 +30,7 @@ public class SearchForProductStep {
     @Then("User can see the search product and expect {int} products")
     public void userCanSeeTheSearchProductAndExpectProducts(int numberOfProduct) {
         // Wait for the products to load
+        System.out.println("STANNA!!!!");
         WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
         WebElement divElementsWithClass = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("my-5")));
         int divCount = divElementsWithClass.findElements(By.cssSelector("div.col")).size();
