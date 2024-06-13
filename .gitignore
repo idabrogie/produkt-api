@@ -4,6 +4,8 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+.github/workflows/static.yml
+
 ### STS ###
 .apt_generated
 .classpath
