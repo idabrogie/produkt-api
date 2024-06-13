@@ -78,10 +78,8 @@ public class SeleniumConfig {
 
     public void addProductToCart(String product){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        String xpathExpression = "//h3[contains(text(), '" + product + "')]/../button";
+        String xpathExpression = String.format("//button[contains(@onclick, \"%s\")]", product);
         WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathExpression)));
-        //"//div[@class='canvas- graph']//a[@href='/accounting.html'][i[@class='icon-usd']]/following-sibling::h4"
-        ////*[@id="main"]/div[1]/div/div
 
         // Scroll into view
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addToCartButton);
