@@ -22,9 +22,9 @@ public class SeleniumConfig {
     public  WebDriver getDriver() {
         if (driver == null) {
             ChromeOptions options = new ChromeOptions();
-            //if (Boolean.parseBoolean(System.getenv("RUN_HEADLESS"))) {
+            if (Boolean.parseBoolean(System.getenv("RUN_HEADLESS"))) {
                 options.addArguments("--headless=new");
-            //}
+            }
             driver = new ChromeDriver(options);
             driver.manage().window().maximize();
         }
