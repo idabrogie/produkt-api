@@ -27,7 +27,7 @@ public class CheckoutCorrectSum {
             String price = product.get("Price");
             String quantity = product.get("Quantity");
 
-            seleniumConfig.addProductToCart(productName);
+            seleniumConfig.addProductToCart(productName, quantity);
         }
 
         seleniumConfig.getDriver().navigate().refresh();

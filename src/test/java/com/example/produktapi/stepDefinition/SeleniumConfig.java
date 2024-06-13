@@ -76,15 +76,17 @@ public class SeleniumConfig {
         }
     }
 
-    public void addProductToCart(String product){
+    public void addProductToCart(String product, String quantity){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         String xpathExpression = String.format("//button[contains(@onclick, \"%s\")]", product);
         WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpathExpression)));
-
+        int quantityInt = Integer.parseInt(quantity);
         // Scroll into view
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addToCartButton);
 
-        // Click using JavaScript executor
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCartButton);
+        for (int i=0; i<quantityInt; i++){
+            // Click using JavaScript executor
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCartButton);
+        };
     }
 }
