@@ -14,13 +14,9 @@ jobs:
       - name: Declare some variables
         shell: bash
         run: |
-          echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
-          echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
+          echo $GITHUB_REF | cut -d'/' -f 3
+          echo $GITHUB_SHA | cut -c1-7
 
-      - name: Another step
-        run: |
-          echo "Branch: ${{ env.branch }}"
-          echo "Sha: ${{ env.sha_short }}"
       - name: Checkout code
         uses: actions/checkout@v3
 
