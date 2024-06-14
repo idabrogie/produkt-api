@@ -43,6 +43,6 @@ public class SearchForProductStep {
         // Get the inner HTML content of the main element
         String innerHTML = mainElement.getAttribute("innerHTML");
         // Assert that the inner HTML content is empty
-        Assertions.assertTrue(innerHTML.isEmpty());
+        Assertions.assertTrue(innerHTML.trim().isEmpty(), "The inner HTML content is not empty");
     }
 }

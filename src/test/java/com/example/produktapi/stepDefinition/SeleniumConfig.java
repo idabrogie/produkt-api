@@ -4,7 +4,6 @@ package com.example.produktapi.stepDefinition;
 import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -22,9 +21,7 @@ public class SeleniumConfig {
     public  WebDriver getDriver() {
         if (driver == null) {
             ChromeOptions options = new ChromeOptions();
-            if (Boolean.parseBoolean(System.getenv("RUN_HEADLESS"))) {
-                options.addArguments("--headless=new");
-            }
+           // options.addArguments("--headless=new");
             driver = new ChromeDriver(options);
             driver.manage().window().maximize();
         }
@@ -67,15 +64,6 @@ public class SeleniumConfig {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCartButton);
     }
 
-    @After
-    public void tearDown() {
-        if (getDriver() != null) {
-            System.out.println("Quitting the driver...");
-            getDriver().quit();
-            driver = null; // Reset the driver to ensure it can be re-initialized if needed
-        }
-    }
-
     public void addProductToCart(String product, String quantity){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         String xpathExpression = String.format("//button[contains(@onclick, \"%s\")]", product);
@@ -87,6 +75,15 @@ public class SeleniumConfig {
         for (int i=0; i<quantityInt; i++){
             // Click using JavaScript executor
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCartButton);
-        };
+        }
+    }
+
+    @After
+    public void tearDown() {
+        if (getDriver() != null) {
+            System.out.println("Quitting the driver...");
+            getDriver().quit();
+            driver = null; // Reset the driver to ensure it can be re-initialized if needed
+        }
     }
 }
