@@ -16,8 +16,6 @@
 	<properties>
 		<java.version>22</java.version>
 	</properties>
-
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -85,7 +83,6 @@
 			<artifactId>maven-surefire-plugin</artifactId>
 			<version>3.2.5</version>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<plugins>

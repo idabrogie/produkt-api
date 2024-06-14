@@ -34,6 +34,10 @@ jobs:
           java-version: 22
           distribution: adopt
 
+      - name: Cleanup Before Tests
+        run : |
+          rm -rf logs/ temp/
+
       - name: Install ChromeDriver
         run: |
           wget "https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.141/linux64/chromedriver-linux64.zip"

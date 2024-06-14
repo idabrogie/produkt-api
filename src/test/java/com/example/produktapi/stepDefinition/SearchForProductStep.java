@@ -29,26 +29,26 @@ public class SearchForProductStep {
                 .perform();
     }
 
-//    @Then("User can see the search product and expect {int} products")
-//    public void userCanSeeTheSearchProductAndExpectProducts(int numberOfProduct) {
-//        WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(20));
-//
-//        // Wait for the products container to be visible
-//        WebElement divElementsWithClass = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("my-5")));
-//
-//        // Find all product elements within the container
-//        List<WebElement> productElements = divElementsWithClass.findElements(By.cssSelector("div.col"));
-//
-//        // Log the number of products found
-//        System.out.println("Found " + productElements.size() + " products.");
-//
-//        // Log the inner HTML content for debugging
-//        System.out.println("Inner HTML of main element: " + divElementsWithClass.getAttribute("innerHTML"));
-//
-//        // Assert that the number of products matches the expected number
-//        Assertions.assertEquals(numberOfProduct, productElements.size(),
-//                "Expected " + numberOfProduct + " products, but found " + productElements.size());
-//    }
+    @Then("User can see the search product and expect {int} products")
+    public void userCanSeeTheSearchProductAndExpectProducts(int numberOfProduct) {
+        WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(20));
+
+        // Wait for the products container to be visible
+        WebElement divElementsWithClass = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("my-5")));
+
+        // Find all product elements within the container
+        List<WebElement> productElements = divElementsWithClass.findElements(By.cssSelector("div.col"));
+
+        // Log the number of products found
+        System.out.println("Found " + productElements.size() + " products.");
+
+        // Log the inner HTML content for debugging
+        System.out.println("Inner HTML of main element: " + divElementsWithClass.getAttribute("innerHTML"));
+
+        // Assert that the number of products matches the expected number
+        Assertions.assertEquals(numberOfProduct, productElements.size(),
+                "Expected " + numberOfProduct + " products, but found " + productElements.size());
+    }
 
     @Then("Result should be an empty main")
     public void resultShouldBeAnEmptyMain() {
