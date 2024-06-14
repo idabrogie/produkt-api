@@ -11,6 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Declare some variables
+        shell: bash
+        run: |
+          echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
+          echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
+
+      - name: Another step
+        run: |
+          echo "Branch: ${{ env.branch }}"
+          echo "Sha: ${{ env.sha_short }}"
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -27,3 +37,13 @@ jobs:
           cd chromedriver-linux64
           chmod +x chromedriver
           sudo mv chromedriver /usr/local/bin
+
+      - name: Build and Run tests
+        run: |
+          echo "Running Selenium tests headlessly..."
+          export RUN_HEADLESS=true
+          mvn -B clean verify \
+          -DskipTests=false \
+          -Dcucumber.features=src/test/java/com/example/produktapi/features \
+          -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
+          echo "Selenium tests completed."
