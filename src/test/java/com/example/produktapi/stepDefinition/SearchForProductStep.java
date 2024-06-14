@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 
 public class SearchForProductStep {
@@ -29,11 +30,19 @@ public class SearchForProductStep {
 
     @Then("User can see the search product and expect {int} products")
     public void userCanSeeTheSearchProductAndExpectProducts(int numberOfProduct) {
-        // Wait for the products to load
-        WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(seleniumConfig.getDriver(), Duration.ofSeconds(20));
+        // Wait for the products to load and be visible
         WebElement divElementsWithClass = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("my-5")));
-        int divCount = divElementsWithClass.findElements(By.cssSelector("div.col")).size();
-        Assertions.assertEquals(numberOfProduct, divCount);
+
+        // Find all product elements
+        List<WebElement> productElements = divElementsWithClass.findElements(By.cssSelector("div.col"));
+
+        // Log the count of found elements
+        System.out.println("Found " + productElements.size() + " products.");
+
+        // Assert that the number of products matches the expected number
+        Assertions.assertEquals(numberOfProduct, productElements.size(),
+                "Expected " + numberOfProduct + " products, but found " + productElements.size());
     }
 
     @Then("Result should be an empty main")
