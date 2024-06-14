@@ -64,7 +64,7 @@ public class CheckoutFormSteps {
         new Actions(seleniumConfig.getDriver())
                 .sendKeys(formElement, set.getValue())
                 .perform();
-        //System.out.println(set.getKey() + " " + set.getValue());
+        System.out.println(set.getKey() + " " + set.getValue());
 
     }
     }
