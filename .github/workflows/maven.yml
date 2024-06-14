@@ -1,4 +1,4 @@
-name: Maven Build and run Selenium Tests on Push
+name: Clean build maven
 
 on:
   push:
