@@ -2,15 +2,13 @@ package com.example.produktapi.stepDefinition;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import org.apache.maven.surefire.shared.io.FileUtils;
+
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.File;
-import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
@@ -47,11 +45,6 @@ public class SearchForProductStep {
         // Log the inner HTML content for debugging
         System.out.println("Inner HTML of main element: " + divElementsWithClass.getAttribute("innerHTML"));
 
-        // Capture screenshot on failure
-        if (productElements.size() != numberOfProduct) {
-            captureScreenshot("search_product_failure");
-        }
-
         // Assert that the number of products matches the expected number
         Assertions.assertEquals(numberOfProduct, productElements.size(),
                 "Expected " + numberOfProduct + " products, but found " + productElements.size());
@@ -67,12 +60,5 @@ public class SearchForProductStep {
         Assertions.assertTrue(innerHTML.trim().isEmpty(), "The inner HTML content is not empty");
     }
 
-    public void captureScreenshot(String screenshotName) {
-        File srcFile = ((TakesScreenshot) seleniumConfig.getDriver()).getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(srcFile, new File("screenshots/" + screenshotName + ".png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 }
