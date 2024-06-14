@@ -42,17 +42,17 @@ jobs:
           chmod +x chromedriver
           sudo mv chromedriver /usr/local/bin
 
-   #   - name: Build and Run tests
-   #     run: |
-   #       echo "Running Selenium tests headlessly..."
-   #       export RUN_HEADLESS=true
-   #       mkdir target
-   #       chmod a+w target
-   #       mvn -B clean verify \
-   #       -DskipTests=false \
-   #       -Dcucumber.features=src/test/java/com/example/produktapi/features \
-   #       -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
-   #       echo "Selenium tests completed."
+      - name: Build and Run tests
+        run: |
+          echo "Running Selenium tests headlessly..."
+          export RUN_HEADLESS=true
+          mkdir target
+          chmod a+w target
+          mvn -B clean verify \
+          -DskipTests=false \
+          -Dcucumber.features=src/test/java/com/example/produktapi/features \
+          -Dwebdriver.chrome.driver=/usr/local/bin/chromedriver
+          echo "Selenium tests completed."
 
  # deploy:
  #   environment:
